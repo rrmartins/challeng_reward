@@ -2,8 +2,6 @@ AllCops:
   TargetRubyVersion: 2.3
   Include:
     - '**/*.rb'
-    
-# Keep these options sorted :)
 
 AccessModifierIndentation:
   Enabled: false
