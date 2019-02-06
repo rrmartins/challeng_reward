@@ -58,21 +58,21 @@ WordArray:
 
 ActionFilter:
   Enabled: false
+
 BlockLength:
   Enabled: false
+
 Rails/SkipsModelValidations:
   Enabled: false
+
 AmbiguousBlockAssociation:
   Enabled: false
-# These two should be removed in the future when Rubocop fixes issues with them
+
 Style/SafeNavigation:
   Enabled: false
+
 Rails/HasManyOrHasOneDependent:
   Enabled: false
 
-Rails/UnknownEnv:
-  Environments:
-    - development
-    - test
-    - staging
-    - production
+Style/FrozenStringLiteralComment:
+  Enabled: false
