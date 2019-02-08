@@ -1,10 +1,10 @@
 module Invites
   class CalculatesController < ApplicationController
     def update
-      if calculate_call
-        render status: :ok, json: @calculate_call.calc_result
+      if calculate_call[:errors].nil?
+        render json: @calculate_call[:calculated].to_json, status: :ok
       else
-        render status: :unprocessable_entity, json: { errors: @calculate_call.errors }
+        render json: { errors: @calculate_call[:errors].to_json }, status: :unprocessable_entity
       end
     end
 
