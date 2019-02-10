@@ -1,10 +1,10 @@
 # Coding Challenge Reward System
 
-I did the project using each line of the file as an access node, and so each node has its characteristics and with that it was doing the calculations.
+I did the project using each line of the file as an access node, and so each node has its characteristics, and with that it was doing the calculations.
 
-To simplify and to see need to have a database for future queries, some kind of DBMS was not used. Staying 100% with ruby and rails.
+To simplify and to see the need to have a database for future queries, some kind of data base was not used. Staying 100% with ruby and rails.
 
-I have only 1 controller (`Invites::CalculatesController`) to call 1 service (`app/services/invites`), which I had similar to a template structure is inside the `lib` folder, since they are not in themselves Rails ActiveRecord templates.
+I have only 1 controller (`Invites::CalculatesController`) to call 1 service (`app/services/invites`), which I had similarity to a template structure is inside the `lib` folder, since they are not in themselves Rails ActiveRecord templates.
 
 We created a simple structure, where each node knows about the parent node, so when we have the acceptance check of the invitation or not, we only update the parent node and look for levels (1 point, 0.5 points, 0.25 points , and so on).
 
