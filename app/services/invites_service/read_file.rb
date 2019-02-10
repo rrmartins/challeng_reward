@@ -2,7 +2,7 @@ require './lib/invites/formatted_row'
 
 module InvitesService
   class ReadFile
-    attr_accessor :file, :data_file, :errors
+    attr_accessor :file, :data_file
 
     KEYWORDS ||= %w[accepts recommends].freeze
     EXTENSIONS_ALLOWS ||= %w[txt].freeze
@@ -76,7 +76,7 @@ module InvitesService
     def validate_keywords(row, index)
       return if validate_row(row)
 
-      add_action_error(index)
+      errors(index)
     end
 
     def validate_row(row)
@@ -94,14 +94,14 @@ module InvitesService
       return unless row.include?('recommends')
       return if inviter_found?(row)
 
-      add_action_error(index)
+      errors(index)
     end
 
     def validate_accepts(row, index)
       return unless row.include?('accepts')
       return if no_inviter?(row)
 
-      add_action_error(index)
+      errors(index)
     end
 
     def inviter_found?(row)
@@ -114,9 +114,8 @@ module InvitesService
       row[action_index..-1].delete('accepts').gsub(/\s+/, '').blank?
     end
 
-    def add_action_error(index)
+    def errors(index)
       @errors ||= { action: "Invitation is invalid at #{index} line" }
-      raise "Invitation is invalid at #{index} line"
     end
 
     def sequence_time_ordered?
