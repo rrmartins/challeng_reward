@@ -80,7 +80,7 @@ RSpec.describe InvitesService::ReadFile do
         let(:invites_file) { 'spec/fixtures/myfiles/invites_date_sequence.txt' }
         let(:filename) { 'invites_date_sequence.txt' }
 
-        fit { expect(service_call[:errors][:date]).to eq 'Dates are in not correct order' }
+        it { expect(service_call[:errors][:date]).to eq 'Dates are in not correct order' }
       end
     end
 
