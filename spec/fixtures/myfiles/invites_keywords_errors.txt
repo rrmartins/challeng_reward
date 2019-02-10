@@ -1,0 +1,7 @@
+2018-06-12 09:41 A recmends B
+2018-06-14 09:41 B accsepts
+2018-06-16 09:41 B recommgnds C
+2018-06-17 09:41 C acceptws
+2018-06-19 09:41 C recommesnds D
+2018-06-23 09:41 B recomme1nds D
+2018-06-25 09:41 D acceptss
