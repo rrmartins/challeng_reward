@@ -75,6 +75,13 @@ RSpec.describe InvitesService::ReadFile do
 
         it { expect(service_call[:errors][:action]).to eq 'Invitation is invalid at 0 line' }
       end
+
+      context 'when file with invites date sequence' do
+        let(:invites_file) { 'spec/fixtures/myfiles/invites_date_sequence.txt' }
+        let(:filename) { 'invites_date_sequence.txt' }
+
+        fit { expect(service_call[:errors][:date]).to eq 'Dates are in not correct order' }
+      end
     end
 
     context 'when return success' do
