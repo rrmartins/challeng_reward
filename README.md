@@ -27,11 +27,13 @@ Follow my instructions for setup, tests and run.
  - `bundle exec rails s -p 3000`
  - `curl -i -H "Accept: application/json" -X GET -F 'file=@README.md' http://localhost:3000/invites/calculate`
 
-PS: In order to better visualize the json output, (Postman)[https://www.getpostman.com/] was used.
+PS: In order to better visualize the json output, [Postman](https://www.getpostman.com/) was used.
 
 
 regards,
 
 Rodrigo Martins
+
 email: rrmartinsjg@gmail.com
+
 phone: +55 11 99483-3250
