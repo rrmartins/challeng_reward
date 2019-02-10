@@ -42,63 +42,75 @@ RSpec.describe InvitesService::ReadFile do
     let(:service_call) { service.call }
 
     it { expect(service_call).to be_a_kind_of Hash }
-    it { expect(service_call[:errors]).to be nil }
-    it { expect(service_call[:invites].count).to eq 7 }
 
-    context 'invite index 0' do
-      it { expect(service_call[:invites][0].action).to eq formatted_rows[0].action }
-      it { expect(service_call[:invites][0].date).to eq formatted_rows[0].date }
-      it { expect(service_call[:invites][0].from).to eq formatted_rows[0].from }
-      it { expect(service_call[:invites][0].row).to eq formatted_rows[0].row }
-      it { expect(service_call[:invites][0].to).to eq formatted_rows[0].to }
+    context 'when return errors' do
+      context 'when file is nil' do
+        let(:test_txt) { nil }
+
+        it { expect(service_call[:errors][:errors]).to eq 'File is required' }
+        it { expect(service_call[:invites]).to eq nil }
+      end
     end
 
-    context 'invite index 1' do
-      it { expect(service_call[:invites][1].action).to eq formatted_rows[1].action }
-      it { expect(service_call[:invites][1].date).to eq formatted_rows[1].date }
-      it { expect(service_call[:invites][1].from).to eq formatted_rows[1].from }
-      it { expect(service_call[:invites][1].row).to eq formatted_rows[1].row }
-      it { expect(service_call[:invites][1].to).to eq formatted_rows[1].to }
-    end
+    context 'when return success' do
+      it { expect(service_call[:errors]).to be nil }
+      it { expect(service_call[:invites].count).to eq 7 }
 
-    context 'invite index 2' do
-      it { expect(service_call[:invites][2].action).to eq formatted_rows[2].action }
-      it { expect(service_call[:invites][2].date).to eq formatted_rows[2].date }
-      it { expect(service_call[:invites][2].from).to eq formatted_rows[2].from }
-      it { expect(service_call[:invites][2].row).to eq formatted_rows[2].row }
-      it { expect(service_call[:invites][2].to).to eq formatted_rows[2].to }
-    end
+      context 'invite index 0' do
+        it { expect(service_call[:invites][0].action).to eq formatted_rows[0].action }
+        it { expect(service_call[:invites][0].date).to eq formatted_rows[0].date }
+        it { expect(service_call[:invites][0].from).to eq formatted_rows[0].from }
+        it { expect(service_call[:invites][0].row).to eq formatted_rows[0].row }
+        it { expect(service_call[:invites][0].to).to eq formatted_rows[0].to }
+      end
 
-    context 'invite index 3' do
-      it { expect(service_call[:invites][3].action).to eq formatted_rows[3].action }
-      it { expect(service_call[:invites][3].date).to eq formatted_rows[3].date }
-      it { expect(service_call[:invites][3].from).to eq formatted_rows[3].from }
-      it { expect(service_call[:invites][3].row).to eq formatted_rows[3].row }
-      it { expect(service_call[:invites][3].to).to eq formatted_rows[3].to }
-    end
+      context 'invite index 1' do
+        it { expect(service_call[:invites][1].action).to eq formatted_rows[1].action }
+        it { expect(service_call[:invites][1].date).to eq formatted_rows[1].date }
+        it { expect(service_call[:invites][1].from).to eq formatted_rows[1].from }
+        it { expect(service_call[:invites][1].row).to eq formatted_rows[1].row }
+        it { expect(service_call[:invites][1].to).to eq formatted_rows[1].to }
+      end
 
-    context 'invite index 4' do
-      it { expect(service_call[:invites][4].action).to eq formatted_rows[4].action }
-      it { expect(service_call[:invites][4].date).to eq formatted_rows[4].date }
-      it { expect(service_call[:invites][4].from).to eq formatted_rows[4].from }
-      it { expect(service_call[:invites][4].row).to eq formatted_rows[4].row }
-      it { expect(service_call[:invites][4].to).to eq formatted_rows[4].to }
-    end
+      context 'invite index 2' do
+        it { expect(service_call[:invites][2].action).to eq formatted_rows[2].action }
+        it { expect(service_call[:invites][2].date).to eq formatted_rows[2].date }
+        it { expect(service_call[:invites][2].from).to eq formatted_rows[2].from }
+        it { expect(service_call[:invites][2].row).to eq formatted_rows[2].row }
+        it { expect(service_call[:invites][2].to).to eq formatted_rows[2].to }
+      end
 
-    context 'invite index 5' do
-      it { expect(service_call[:invites][5].action).to eq formatted_rows[5].action }
-      it { expect(service_call[:invites][5].date).to eq formatted_rows[5].date }
-      it { expect(service_call[:invites][5].from).to eq formatted_rows[5].from }
-      it { expect(service_call[:invites][5].row).to eq formatted_rows[5].row }
-      it { expect(service_call[:invites][5].to).to eq formatted_rows[5].to }
-    end
+      context 'invite index 3' do
+        it { expect(service_call[:invites][3].action).to eq formatted_rows[3].action }
+        it { expect(service_call[:invites][3].date).to eq formatted_rows[3].date }
+        it { expect(service_call[:invites][3].from).to eq formatted_rows[3].from }
+        it { expect(service_call[:invites][3].row).to eq formatted_rows[3].row }
+        it { expect(service_call[:invites][3].to).to eq formatted_rows[3].to }
+      end
 
-    context 'invite index 6' do
-      it { expect(service_call[:invites][6].action).to eq formatted_rows[6].action }
-      it { expect(service_call[:invites][6].date).to eq formatted_rows[6].date }
-      it { expect(service_call[:invites][6].from).to eq formatted_rows[6].from }
-      it { expect(service_call[:invites][6].row).to eq formatted_rows[6].row }
-      it { expect(service_call[:invites][6].to).to eq formatted_rows[6].to }
+      context 'invite index 4' do
+        it { expect(service_call[:invites][4].action).to eq formatted_rows[4].action }
+        it { expect(service_call[:invites][4].date).to eq formatted_rows[4].date }
+        it { expect(service_call[:invites][4].from).to eq formatted_rows[4].from }
+        it { expect(service_call[:invites][4].row).to eq formatted_rows[4].row }
+        it { expect(service_call[:invites][4].to).to eq formatted_rows[4].to }
+      end
+
+      context 'invite index 5' do
+        it { expect(service_call[:invites][5].action).to eq formatted_rows[5].action }
+        it { expect(service_call[:invites][5].date).to eq formatted_rows[5].date }
+        it { expect(service_call[:invites][5].from).to eq formatted_rows[5].from }
+        it { expect(service_call[:invites][5].row).to eq formatted_rows[5].row }
+        it { expect(service_call[:invites][5].to).to eq formatted_rows[5].to }
+      end
+
+      context 'invite index 6' do
+        it { expect(service_call[:invites][6].action).to eq formatted_rows[6].action }
+        it { expect(service_call[:invites][6].date).to eq formatted_rows[6].date }
+        it { expect(service_call[:invites][6].from).to eq formatted_rows[6].from }
+        it { expect(service_call[:invites][6].row).to eq formatted_rows[6].row }
+        it { expect(service_call[:invites][6].to).to eq formatted_rows[6].to }
+      end
     end
   end
 end
