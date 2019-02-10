@@ -21,10 +21,11 @@ RSpec.describe InvitesService::ReadFile do
   end
 
   let(:invites_file) { 'spec/fixtures/myfiles/invites_ok.txt' }
+  let(:filename) { 'invites_ok.txt' }
 
   let(:file_hash) do
     {
-      filename: 'invites_ok.txt',
+      filename: filename,
       type: 'text/plain',
       tempfile: File.new(Rails.root.join(invites_file))
     }
@@ -48,15 +49,24 @@ RSpec.describe InvitesService::ReadFile do
     context 'when return errors' do
       context 'when file is nil' do
         let(:test_txt) { nil }
+        let(:filename) { nil }
 
         it { expect(service_call[:errors][:errors]).to eq 'File is required' }
         it { expect(service_call[:invites]).to eq nil }
       end
 
       context 'when file is blank' do
-        let(:invites_file) { 'spec/fixtures/myfiles/invites_blank.txt' } 
+        let(:invites_file) { 'spec/fixtures/myfiles/invites_blank.txt' }
+        let(:filename) { 'invites_blank.txt' }
 
         it { expect(service_call[:errors][:errors]).to eq 'File is required' }
+      end
+
+      context 'when file is extension not allow' do
+        let(:invites_file) { 'spec/fixtures/myfiles/invites_extension_error.md' }
+        let(:filename) { 'invites_extension_error.md' }
+
+        it { expect(service_call[:errors][:errors]).to eq 'Extension not allow' }
       end
     end
 
