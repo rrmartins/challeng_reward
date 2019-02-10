@@ -68,6 +68,13 @@ RSpec.describe InvitesService::ReadFile do
 
         it { expect(service_call[:errors][:errors]).to eq 'Extension not allow' }
       end
+
+      context 'when file hasnt keywords' do
+        let(:invites_file) { 'spec/fixtures/myfiles/invites_keywords_errors.txt' }
+        let(:filename) { 'invites_keywords_errors.txt' }
+
+        it { expect(service_call[:errors][:action]).to eq 'Invitation is invalid at 0 line' }
+      end
     end
 
     context 'when return success' do
