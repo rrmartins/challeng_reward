@@ -69,5 +69,13 @@ RSpec.describe InvitesService::ReadFile do
       it { expect(service_call[:invites][2].to).to eq formatted_rows[2].to }
     end
 
+    context 'invite index 3' do
+      it { expect(service_call[:invites][3].action).to eq formatted_rows[3].action }
+      it { expect(service_call[:invites][3].date).to eq formatted_rows[3].date }
+      it { expect(service_call[:invites][3].from).to eq formatted_rows[3].from }
+      it { expect(service_call[:invites][3].row).to eq formatted_rows[3].row }
+      it { expect(service_call[:invites][3].to).to eq formatted_rows[3].to }
+    end
+
   end
 end
