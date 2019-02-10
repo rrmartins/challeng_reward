@@ -48,9 +48,7 @@ module InvitesService
     end
 
     def validate_extension
-      unless EXTENSIONS_ALLOWS.include?(file_name.split('.').last)
-        @errors ||= { errors: 'Extension not allow' }
-      end
+      error_extension unless EXTENSIONS_ALLOWS.include?(file_name.split('.').last)
     end
 
     def validate_rows
@@ -112,6 +110,10 @@ module InvitesService
     def no_inviter?(row)
       action_index = row.index('accepts')
       row[action_index..-1].delete('accepts').gsub(/\s+/, '').blank?
+    end
+
+    def error_extension
+      @errors ||= { errors: 'Extension not allow' }
     end
 
     def errors(index)
